@@ -1,6 +1,6 @@
 Name:           pigz
-Version:        2.1.6
-Release:        3
+Version:        2.2.4
+Release:        1
 Summary:        Parallel implementation of gzip
 Group:          Archiving/Compression
 License:        zlib
