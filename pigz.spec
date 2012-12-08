@@ -1,5 +1,5 @@
 Name:           pigz
-Version:        2.2.5
+Version:        2.2.4
 Release:        1
 Summary:        Parallel implementation of gzip
 Group:          Archiving/Compression
@@ -29,3 +29,15 @@ install -p -m644 pigz.1 -D %{buildroot}%{_datadir}/man/man1/pigz.1
 %{_bindir}/pigz
 %{_bindir}/unpigz
 %{_datadir}/man/man1/pigz.*
+
+
+%changelog
+* Mon Mar 26 2012 Alexander Khrukin <akhrukin@mandriva.org> 2.2.4-1
++ Revision: 787074
+- version update 2.2.4
+
+* Fri Aug 12 2011 Per Øyvind Karlsen <peroyvind@mandriva.org> 2.1.6-3
++ Revision: 694064
+- fix group
+- imported package pigz
+
