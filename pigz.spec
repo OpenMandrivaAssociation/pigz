@@ -1,12 +1,12 @@
-Name:           pigz
-Version:        2.2.4
-Release:        1
-Summary:        Parallel implementation of gzip
-Group:          Archiving/Compression
-License:        zlib
-URL:            http://www.zlib.net/pigz/
-Source0:        http://www.zlib.net/%{name}/%{name}-%{version}.tar.gz
-BuildRequires:  zlib-devel
+Name:			pigz
+Version:		2.3
+Release:		1
+Summary:		Parallel implementation of gzip
+Group:			Archiving/Compression
+License:		zlib
+URL:			http://www.zlib.net/pigz/
+Source0:		http://www.zlib.net/%{name}/%{name}-%{version}.tar.gz
+BuildRequires:	zlib-devel
 
 %description
 pigz, which stands for parallel implementation of gzip,
