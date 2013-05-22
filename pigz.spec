@@ -6,7 +6,8 @@ Group:			Archiving/Compression
 License:		zlib
 URL:			http://www.zlib.net/pigz/
 Source0:		http://www.zlib.net/%{name}/%{name}-%{version}.tar.gz
-BuildRequires:	zlib-devel
+BuildRequires:		zlib-devel
+Patch1:			ldflags.patch
 
 %description
 pigz, which stands for parallel implementation of gzip,
@@ -15,6 +16,7 @@ multiple processors and multiple cores to the hilt when compressing data.
 
 %prep
 %setup -q
+%apply_patches
 
 %build
 %make CC="%{__cc}" AR="%{__ar}" RANLIB="%{__ranlib}"  CFLAGS="%{optflags} -O3" LDFLAGS="%{ldflags} -lm"
