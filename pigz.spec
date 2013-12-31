@@ -1,12 +1,11 @@
 Summary:	Parallel implementation of gzip
 Name:		pigz
-Version:	2.3
-Release:	5
+Version:	2.3.1
+Release:	1
 Group:		Archiving/Compression
 License:	zlib
 Url:		http://www.zlib.net/pigz/
 Source0:	http://www.zlib.net/%{name}/%{name}-%{version}.tar.gz
-Patch1:		ldflags.patch
 BuildRequires:	pkgconfig(zlib)
 
 %description

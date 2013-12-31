@@ -1,2 +1,4 @@
+removed_sources:
+  pigz-2.3.tar.gz: c8d4e622863c5ffff9321453acc9a37e9da87af7
 sources:
-  "pigz-2.3.tar.gz": c8d4e622863c5ffff9321453acc9a37e9da87af7
+  pigz-2.3.1.tar.gz: 2d5c9a70a6afcf1d8986890026d70c96b9346c07
