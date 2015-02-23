@@ -18,7 +18,7 @@ multiple processors and multiple cores to the hilt when compressing data.
 %apply_patches
 
 %build
-%make CC="%{__cc}" AR="%{__ar}" RANLIB="%{__ranlib}"  CFLAGS="%{optflags} -O3" LDFLAGS="%{ldflags} -lm"
+%make CC="%{__cc}" AR="%{__ar}" RANLIB="%{__ranlib}"  CFLAGS="%{optflags} -O3" LDFLAGS="%{ldflags} -lz -lm"
 
 %install
 install -p -m755 pigz -D %{buildroot}%{_bindir}/pigz
