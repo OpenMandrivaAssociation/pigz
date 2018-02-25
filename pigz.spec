@@ -30,6 +30,7 @@ install -p -m644 pigz.1 -D %{buildroot}%{_datadir}/man/man1/pigz.1
 # (tpg) install replacement files to use pigz instead of gzip
 ln -sf /bin/pigz %{buildroot}/bin/gzip
 ln -sf /bin/unpigz %{buildroot}/bin/gunzip
+mkdir -p %{buildroot}%{_bindir}
 ln -sf /bin/unpigz %{buildroot}%{_bindir}/gunzip
 
 %files
