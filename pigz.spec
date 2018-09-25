@@ -1,7 +1,7 @@
 Summary:	Parallel implementation of gzip
 Name:		pigz
 Version:	2.4
-Release:	3
+Release:	4
 Group:		Archiving/Compression
 License:	zlib
 Url:		http://www.zlib.net/pigz/
@@ -16,11 +16,10 @@ is a fully functional replacement for gzip that exploits
 multiple processors and multiple cores to the hilt when compressing data.
 
 %prep
-%setup -q
-%apply_patches
+%autosetup -p1
 
 %build
-%make CC="%{__cc}" AR="%{__ar}" RANLIB="%{__ranlib}"  CFLAGS="%{optflags} -Ofast" LDFLAGS="%{ldflags} -lz -lm"
+%make_build CC="%{__cc}" AR="%{__ar}" RANLIB="%{__ranlib}" CFLAGS="%{optflags} -Ofast" LDFLAGS="%{ldflags} -lz -lm"
 
 %install
 install -p -m755 pigz -D %{buildroot}/bin/pigz
@@ -34,7 +33,7 @@ mkdir -p %{buildroot}%{_bindir}
 ln -sf /bin/unpigz %{buildroot}%{_bindir}/gunzip
 
 %files
-%doc pigz.pdf README
+%doc README
 /bin/pigz
 /bin/unpigz
 /bin/gzip
