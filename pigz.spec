@@ -1,7 +1,7 @@
 Summary:	Parallel implementation of gzip
 Name:		pigz
 Version:	2.4
-Release:	5
+Release:	6
 Group:		Archiving/Compression
 License:	zlib
 Url:		http://www.zlib.net/pigz/
@@ -19,7 +19,7 @@ multiple processors and multiple cores to the hilt when compressing data.
 %autosetup -p1
 
 %build
-%make_build CC="%{__cc}" AR="%{__ar}" RANLIB="%{__ranlib}" CFLAGS="%{optflags} -Ofast" LDFLAGS="%{ldflags} -lz -lm"
+%make_build CC="%{__cc}" AR="%{__ar}" RANLIB="%{__ranlib}" CFLAGS="%{optflags} -O3" LDFLAGS="%{ldflags} -lz -lm"
 
 %install
 install -p -m755 pigz -D %{buildroot}/bin/pigz
