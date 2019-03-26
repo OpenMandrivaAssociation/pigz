@@ -1,11 +1,12 @@
 Summary:	Parallel implementation of gzip
 Name:		pigz
 Version:	2.4
-Release:	6
+Release:	7
 Group:		Archiving/Compression
 License:	zlib
 Url:		http://www.zlib.net/pigz/
 Source0:	http://www.zlib.net/%{name}/%{name}-%{version}.tar.gz
+Patch0:		pigz-2.4-Makefile.patch
 BuildRequires:	pkgconfig(zlib)
 # (tpg) by default use pigz as system-wide gzip
 Conflicts:	gzip < 1.9-3
