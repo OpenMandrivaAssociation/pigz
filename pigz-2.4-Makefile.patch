@@ -1,17 +1,17 @@
-diff -Naur pigz-2.4/Makefile pigz-2.4.tpg/Makefile
---- pigz-2.4/Makefile	2017-12-27 00:35:01.000000000 +0000
-+++ pigz-2.4.tpg/Makefile	2019-03-26 23:08:58.884000000 +0000
+diff -up pigz-2.5/Makefile.1~ pigz-2.5/Makefile
+--- pigz-2.5/Makefile.1~	2021-01-24 06:19:13.000000000 +0100
++++ pigz-2.5/Makefile	2021-01-25 03:19:15.954026445 +0100
 @@ -1,6 +1,6 @@
 -CC=gcc
--CFLAGS=-O3 -Wall -Wextra -Wno-unknown-pragmas
+-CFLAGS=-O3 -Wall -Wextra -Wno-unknown-pragmas -Wcast-qual
 -LDFLAGS=
 +CC?=gcc
-+CFLAGS+=-O3 -Wall -Wextra -Wno-unknown-pragmas
++CFLAGS+=-O3 -Wall -Wextra -Wno-unknown-pragmas -Wcast-qual
 +LDFLAGS+=
- LIBS=-lm -lpthread -lz
- ZOPFLI=zopfli/src/zopfli/
- ZOP=deflate.o blocksplitter.o tree.o lz77.o cache.o hash.o util.o squeeze.o katajainen.o
-@@ -8,7 +8,7 @@
+ # CFLAGS=-O3 -Wall -Wextra -Wno-unknown-pragmas -Wcast-qual -g -fsanitize=thread
+ # LDFLAGS=-g -fsanitize=thread
+ # CFLAGS=-O3 -Wall -Wextra -Wno-unknown-pragmas -Wcast-qual -g -fsanitize=address
+@@ -12,7 +12,7 @@ ZOP=deflate.o blocksplitter.o tree.o lz7
  # use gcc and gmake on Solaris
  
  pigz: pigz.o yarn.o try.o $(ZOP)
