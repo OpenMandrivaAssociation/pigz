@@ -1,7 +1,12 @@
+%global optflags %{optflags} -O3
+
+# (tpg) enable PGO build
+%bcond_without pgo
+
 Summary:	Parallel implementation of gzip
 Name:		pigz
 Version:	2.6
-Release:	2
+Release:	3
 Group:		Archiving/Compression
 License:	zlib
 Url:		http://www.zlib.net/pigz/
@@ -20,7 +25,29 @@ multiple processors and multiple cores to the hilt when compressing data.
 %autosetup -p1
 
 %build
-%make_build CC="%{__cc}" AR="%{__ar}" RANLIB="%{__ranlib}" CFLAGS="%{optflags} -O3" LDFLAGS="%{ldflags} -lz -lm"
+%set_build_flags
+
+%if %{with pgo}
+export LD_LIBRARY_PATH="$(pwd)"
+
+CFLAGS="%{optflags} -fprofile-generate -mllvm -vp-counters-per-site=8" \
+CXXFLAGS="%{optflags} -fprofile-generate" \
+LDFLAGS="%{build_ldflags} -fprofile-generate" \
+%make_build
+
+make test ||:
+
+unset LD_LIBRARY_PATH
+llvm-profdata merge --output=%{name}-llvm.profdata *.profraw
+PROFDATA="$(realpath %{name}-llvm.profdata)"
+rm -f *.profraw
+make clean
+
+CFLAGS="%{optflags} -fprofile-use=$PROFDATA" \
+CXXFLAGS="%{optflags} -fprofile-use=$PROFDATA" \
+LDFLAGS="%{build_ldflags} -fprofile-use=$PROFDATA" \
+%endif
+%make_build
 
 %install
 install -p -m755 pigz -D %{buildroot}/bin/pigz
@@ -39,5 +66,5 @@ ln -sf /bin/unpigz %{buildroot}%{_bindir}/gunzip
 /bin/unpigz
 /bin/gzip
 /bin/gunzip
-%{_bindir}/gunzip
-%{_mandir}/man1/pigz.*
+%doc %{_bindir}/gunzip
+%doc %{_mandir}/man1/pigz.*
