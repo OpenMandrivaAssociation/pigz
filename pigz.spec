@@ -6,7 +6,7 @@
 Summary:	Parallel implementation of gzip
 Name:		pigz
 Version:	2.6
-Release:	3
+Release:	4
 Group:		Archiving/Compression
 License:	zlib
 Url:		http://www.zlib.net/pigz/
@@ -38,7 +38,7 @@ LDFLAGS="%{build_ldflags} -fprofile-generate" \
 make test ||:
 
 unset LD_LIBRARY_PATH
-llvm-profdata merge --output=%{name}-llvm.profdata *.profraw
+llvm-profdata merge --output=%{name}-llvm.profdata $(find . -name "*.profraw" -type f)
 PROFDATA="$(realpath %{name}-llvm.profdata)"
 rm -f *.profraw
 make clean
@@ -66,5 +66,5 @@ ln -sf /bin/unpigz %{buildroot}%{_bindir}/gunzip
 /bin/unpigz
 /bin/gzip
 /bin/gunzip
-%doc %{_bindir}/gunzip
+%{_bindir}/gunzip
 %doc %{_mandir}/man1/pigz.*
