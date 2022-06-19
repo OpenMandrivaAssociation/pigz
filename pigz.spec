@@ -6,7 +6,7 @@
 Summary:	Parallel implementation of gzip
 Name:		pigz
 Version:	2.7
-Release:	2
+Release:	3
 Group:		Archiving/Compression
 License:	zlib
 Url:		http://www.zlib.net/pigz/
@@ -55,16 +55,10 @@ install -p -m755 unpigz -D %{buildroot}%{_bindir}/unpigz
 install -p -m644 pigz.1 -D %{buildroot}%{_datadir}/man/man1/pigz.1
 
 # (tpg) install replacement files to use pigz instead of gzip
-mkdir -p %{buildroot}/bin
-ln -sf %{_bindir}/unpigz %{buildroot}/bin/gunzip
-ln -sf %{_bindir}/pigz %{buildroot}/bin/gzip
 ln -sf %{_bindir}/unpigz %{buildroot}%{_bindir}/gunzip
 ln -sf %{_bindir}/pigz %{buildroot}%{_bindir}/gzip
-ln -sf %{_bindir}/unpigz %{buildroot}/bin/unpigz
-ln -sf %{_bindir}/pigz %{buildroot}/bin/pigz
 
 %files
 %doc README
-/bin/*
 %{_bindir}/*
 %doc %{_mandir}/man1/pigz.*
