@@ -9,7 +9,7 @@ Version:	2.8
 Release:	1
 Group:		Archiving/Compression
 License:	zlib
-Url:		http://www.zlib.net/pigz/
+Url:		https://www.zlib.net/pigz/
 Source0:	http://www.zlib.net/%{name}/%{name}-%{version}.tar.gz
 Patch0:		pigz-2.4-Makefile.patch
 BuildRequires:	pkgconfig(zlib)
