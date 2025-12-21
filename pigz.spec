@@ -12,6 +12,7 @@ License:	zlib
 Url:		https://www.zlib.net/pigz/
 Source0:	http://www.zlib.net/%{name}/%{name}-%{version}.tar.gz
 Patch0:		pigz-2.4-Makefile.patch
+BuildRequires:	make
 BuildRequires:	pkgconfig(zlib)
 # (tpg) by default use pigz as system-wide gzip
 Conflicts:	gzip < 1.9-3
